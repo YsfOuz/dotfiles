@@ -1,0 +1,6 @@
+module Panels
+AppLauncher   1.0 AppLauncher.qml
+ClipboardMenu 1.0 ClipboardMenu.qml
+Notifications 1.0 Notifications.qml
+Osd           1.0 Osd.qml
+PowerMenu     1.0 PowerMenu.qml
