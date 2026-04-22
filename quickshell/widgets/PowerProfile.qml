@@ -8,23 +8,10 @@ Item {
     implicitWidth:  Settings.leftBarWidth - Settings.padding * 2
     implicitHeight: implicitWidth
 
-    property string ctl:             "powerprofilesctl"
+    property string ctl:             "tlpctl"
     property var    availableProfiles: []
 
     SystemPalette { id: palette }
-
-    // Detect backend: tlp-pd takes priority if its service is active
-    Process {
-        id: detectProc
-        stdout: SplitParser {
-            onRead: line => { if (line.trim() === "active") root.ctl = "tlpctl" }
-        }
-        onExited: {
-            listProc._tmp = []
-            listProc.exec([root.ctl, "list"])
-        }
-        Component.onCompleted: exec(["systemctl", "is-active", "tlp-pd"])
-    }
 
     Process {
         id: listProc
@@ -39,6 +26,7 @@ Item {
             root.availableProfiles = listProc._tmp
             getProc.exec([root.ctl, "get"])
         }
+        Component.onCompleted: { _tmp = []; exec([root.ctl, "list"]) }
     }
 
     Process {

@@ -36,6 +36,7 @@ Item {
     })
 
     PanelWindow {
+        id: leftBarPanel
         anchors.left:   true
         anchors.top:    true
         anchors.bottom: true

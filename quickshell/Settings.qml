@@ -49,12 +49,12 @@ Singleton {
     property int  powerMenuMarginRight:  0
 
     property var powerMenuActions: [
-        { icon: "󰌾", label: "Lock",      cmd: ["hyprlock"],                    accent: ""        },
-        { icon: "󰒲", label: "Suspend",   cmd: ["systemctl", "suspend"],        accent: ""        },
-        { icon: "󰋊", label: "Hibernate", cmd: ["systemctl", "hibernate"],      accent: ""        },
-        { icon: "󰍃", label: "Logout",    cmd: ["hyprctl", "dispatch", "exit"], accent: ""        },
-        { icon: "󰑓", label: "Reboot",    cmd: ["systemctl", "reboot"],         accent: "#e0a050" },
-        { icon: "󰐥", label: "Shutdown",  cmd: ["systemctl", "poweroff"],       accent: "#e05050" },
+        { icon: "󰌾", label: "Lock",      cmd: ["qs", "ipc", "call", "lockscreen", "lock"], accent: ""        },
+        { icon: "󰒲", label: "Suspend",   cmd: ["loginctl", "suspend"],                     accent: ""        },
+        { icon: "󰋊", label: "Hibernate", cmd: ["loginctl", "hibernate"],                   accent: ""        },
+        { icon: "󰍃", label: "Logout",    cmd: ["mmsg", "-q"],                               accent: ""        },
+        { icon: "󰑓", label: "Reboot",    cmd: ["loginctl", "reboot"],                       accent: "#e0a050" },
+        { icon: "󰐥", label: "Shutdown",  cmd: ["loginctl", "poweroff"],                     accent: "#e05050" },
     ]
 
     // ── Clipboard ─────────────────────────────────────────────────

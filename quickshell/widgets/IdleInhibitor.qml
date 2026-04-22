@@ -10,7 +10,7 @@ Item {
 
     Process {
         command: [
-            "systemd-inhibit",
+            "elogind-inhibit",
             "--what=idle", "--who=Quickshell",
             "--why=User requested", "--mode=block",
             "sleep", "infinity"
@@ -20,7 +20,7 @@ Item {
 
     Text {
         anchors.centerIn: parent
-        text:           IdleInhibitorState.inhibiting ? "\uf0f4" : "\uf186"
+        text:           IdleInhibitorState.inhibiting ? "" : ""
         font.pixelSize: Settings.fontSize
         color: IdleInhibitorState.inhibiting ? palette.highlight : palette.placeholderText
     }

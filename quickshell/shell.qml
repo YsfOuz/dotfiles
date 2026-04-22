@@ -7,6 +7,8 @@ import "bars"
 import "panels"
 
 ShellRoot {
+    WallpaperPanel {}
+
     AppLauncher   { id: launcher }
     LeftBar       {}
     BottomBar     {}
@@ -14,6 +16,7 @@ ShellRoot {
     Notifications { id: notifs }
     Osd           { id: osd }
     PowerMenu     { id: powerMenu }
+    LockScreen    { id: lockScreen }
 
     IpcHandler {
         target: "launcher"
@@ -35,6 +38,11 @@ ShellRoot {
     IpcHandler {
         target: "powermenu"
         function toggle() { powerMenu.toggle() }
+    }
+
+    IpcHandler {
+        target: "lockscreen"
+        function lock() { lockScreen.lock() }
     }
 
     NotificationServer {
