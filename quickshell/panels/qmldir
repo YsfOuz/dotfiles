@@ -5,3 +5,4 @@ LockScreen    1.0 LockScreen.qml
 Notifications 1.0 Notifications.qml
 Osd           1.0 Osd.qml
 PowerMenu     1.0 PowerMenu.qml
+PamManager    1.0 PamManager.qml

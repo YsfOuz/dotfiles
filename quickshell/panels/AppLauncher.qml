@@ -9,6 +9,7 @@ import ".."
 
 PanelWindow {
     id: root
+
     visible: false
     implicitWidth:  Settings.launcherWidth
     implicitHeight: Settings.launcherHeight
@@ -86,12 +87,21 @@ PanelWindow {
     }
 
     Rectangle {
+        id: bg
         anchors.fill: parent
         color:        Qt.rgba(palette.window.r, palette.window.g, palette.window.b, Settings.opacity)
         border.color: palette.mid
         border.width: Settings.borderWidth
         radius:       Settings.cornerRadius
         focus:        true
+
+        opacity: root.visible ? 1 : 0
+        Behavior on opacity {
+            NumberAnimation {
+                duration: Settings.enableAnimations ? Settings.animationDuration : 0
+                easing.type: Easing.OutCubic
+            }
+        }
 
         Keys.onEscapePressed: root.visible = false
 

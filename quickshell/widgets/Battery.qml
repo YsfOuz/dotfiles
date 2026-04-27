@@ -16,27 +16,18 @@ Item {
 
     SystemPalette { id: palette }
 
-    Timer {
-        interval: 30000; running: true; repeat: true; triggeredOnStart: true
-        onTriggered: proc.exec([
-            "sh", "-c",
-            "for b in BAT0 BAT1 BAT2; do d=/sys/class/power_supply/$b; " +
-            "[ -f $d/capacity ] && printf '%s %s' $(cat $d/capacity) $(cat $d/status) && break; done"
-        ])
-    }
-
-    Process {
-        id: proc
-        stdout: SplitParser {
-            onRead: line => {
-                var p = line.trim().split(" ")
-                if (p.length >= 2) {
-                    var n = parseInt(p[0])
-                    if (!isNaN(n) && n >= 0 && n <= 100) {
-                        root.capacity   = n
-                        root.status     = p[1]
-                        root.hasBattery = true
-                    }
+    ProcessWatcher {
+        id: watcher
+        command: "sh"
+        processArgs: ["-c", "while true; do for b in BAT0 BAT1 BAT2; do d=/sys/class/power_supply/$b; if [ -f $d/capacity ]; then echo \"\$(cat $d/capacity) \$(cat $d/status)\"; break; fi; done; sleep 1; done"]
+        onRead: line => {
+            var p = line.trim().split(/\s+/)
+            if (p.length >= 2) {
+                var n = parseInt(p[0])
+                if (!isNaN(n) && n >= 0 && n <= 100) {
+                    root.capacity   = n
+                    root.status     = p[1]
+                    root.hasBattery = true
                 }
             }
         }

@@ -37,10 +37,5 @@ cyan    = "#43B3AE"
 white   = "#F0E3D6"
 
 [window]
-opacity = 1.0 
+opacity = 0.75
 padding = { x = 4, y = 4 }
-
-[[keyboard.bindings]]
-key = "Return"
-mods = "Shift"
-chars = "\u001B\r"

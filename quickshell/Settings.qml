@@ -7,9 +7,17 @@ Singleton {
     property int    padding:      8
     property int    spacing:      8
     property int    fontSize:     16
-    property real   borderWidth:  0
+    property real   borderWidth:  2
     property int    margin:       8
-    property real   opacity:      0.75
+    property real   opacity:      1
+
+    // New Fine-Tuning Properties
+    property int    discHoleSize: 4
+    property int    mediaProgressHeight: 4
+    property int    urgentBorderWidth: 2
+    property int    actionItemSpacing: 8
+    property bool   enableAnimations: false
+    property int    animationDuration: 200 // ms
 
     // ── Bars ──────────────────────────────────────────────────────
     property int leftBarWidth:    48

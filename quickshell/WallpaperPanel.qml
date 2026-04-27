@@ -15,7 +15,7 @@ PanelWindow {
 
     Image {
         anchors.fill: parent
-        source:       "file://" + Quickshell.shellDir + "/../wallpapers/verdigris.png"
+        source:       "file://" + Quickshell.shellDir + "/../wallpapers/verdigrisMinimal.png"
         fillMode:     Image.PreserveAspectCrop
         asynchronous: true
     }

@@ -55,7 +55,7 @@ PanelWindow {
                 model: Settings.powerMenuActions
 
                 delegate: Column {
-                    spacing: 8
+                    spacing: Settings.actionItemSpacing
 
                     Rectangle {
                         width:  Settings.powerMenuButtonSize
@@ -65,14 +65,14 @@ PanelWindow {
                                ? (modelData.accent !== "" ? modelData.accent : palette.highlight)
                                : Qt.rgba(palette.mid.r, palette.mid.g, palette.mid.b, 0.3)
 
-                        Behavior on color { ColorAnimation { duration: 120 } }
+                        Behavior on color { ColorAnimation { duration: Settings.enableAnimations ? Settings.animationDuration : 0 } }
 
                         Text {
                             anchors.centerIn: parent
                             text:           modelData.icon
                             font.pixelSize: Settings.powerMenuIconSize
                             color: area.containsMouse ? "white" : palette.text
-                            Behavior on color { ColorAnimation { duration: 120 } }
+                            Behavior on color { ColorAnimation { duration: Settings.enableAnimations ? Settings.animationDuration : 0 } }
                         }
 
                         MouseArea {

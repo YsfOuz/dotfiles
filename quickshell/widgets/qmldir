@@ -10,3 +10,4 @@ Tray          1.0 Tray.qml
 Volume        1.0 Volume.qml
 Wifi          1.0 Wifi.qml
 Workspaces    1.0 Workspaces.qml
+ProcessWatcher 1.0 ProcessWatcher.qml

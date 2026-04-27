@@ -1,0 +1,7 @@
+module Components
+Bar 1.0 bar.qml
+Wallpaper 1.0 wallpaper.qml
+AppLauncher 1.0 appLauncher.qml
+PowerMenu 1.0 powerMenu.qml
+Notifications 1.0 notifications.qml
+LockScreen 1.0 lockScreen.qml

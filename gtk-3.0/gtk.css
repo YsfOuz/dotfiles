@@ -1,0 +1,229 @@
+/* Verdigris — GTK3 color overrides */
+
+@define-color theme_fg_color #c0b5ab;
+@define-color theme_text_color #c0b5ab;
+@define-color theme_bg_color #0c2323;
+@define-color theme_base_color #102c2c;
+@define-color theme_selected_bg_color #2a91a2;
+@define-color theme_selected_fg_color #f0e3d6;
+@define-color insensitive_bg_color #102c2c;
+@define-color insensitive_fg_color #7a736c;
+@define-color insensitive_base_color #102c2c;
+@define-color theme_unfocused_fg_color #999088;
+@define-color theme_unfocused_text_color #c0b5ab;
+@define-color theme_unfocused_bg_color #0c2323;
+@define-color theme_unfocused_base_color #102c2c;
+@define-color theme_unfocused_selected_bg_color #143837;
+@define-color theme_unfocused_selected_fg_color #f0e3d6;
+@define-color unfocused_insensitive_color #7a736c;
+@define-color borders #1a4745;
+@define-color unfocused_borders #143837;
+@define-color warning_color #a08e50;
+@define-color error_color #b3653c;
+@define-color success_color #48b777;
+@define-color accent_color #2a91a2;
+
+@define-color wm_title shade(#c0b5ab, 1.8);
+@define-color wm_unfocused_title #999088;
+@define-color wm_highlight transparent;
+@define-color wm_borders_edge alpha(#f0e3d6, 0.1);
+@define-color wm_bg_a shade(#0c2323, 1.2);
+@define-color wm_bg_b #0c2323;
+@define-color wm_shadow alpha(black, 0.35);
+@define-color wm_border alpha(black, 0.18);
+@define-color wm_button_hover_color_a shade(#0c2323, 1.3);
+@define-color wm_button_hover_color_b #0c2323;
+@define-color wm_button_active_color_a shade(#0c2323, 0.85);
+@define-color wm_button_active_color_b shade(#0c2323, 0.89);
+@define-color wm_button_active_color_c shade(#0c2323, 0.9);
+@define-color content_view_bg #102c2c;
+@define-color text_view_bg #0c2323;
+
+/* Window */
+window, .background {
+  background-color: #0c2323;
+  color: #c0b5ab;
+}
+
+/* Headerbar */
+headerbar, .titlebar {
+  background-color: #102c2c;
+  color: #c0b5ab;
+  border-bottom-color: #1a4745;
+}
+
+/* Views */
+.view, textview, treeview {
+  background-color: #0c2323;
+  color: #c0b5ab;
+}
+
+/* Rows / list items */
+row {
+  color: #c0b5ab;
+}
+
+row:hover {
+  background-color: rgba(42, 145, 162, 0.1);
+}
+
+row:selected, row:selected:hover {
+  background-color: rgba(42, 145, 162, 0.25);
+  color: #f0e3d6;
+}
+
+/* Buttons */
+button {
+  background-color: #102c2c;
+  color: #c0b5ab;
+  border-color: #1a4745;
+}
+
+button:hover {
+  background-color: #143837;
+}
+
+button:active {
+  background-color: #1a4745;
+}
+
+button.suggested-action {
+  background-color: #2a91a2;
+  color: #f0e3d6;
+  border-color: #2a91a2;
+}
+
+button.destructive-action {
+  background-color: #b3653c;
+  color: #f0e3d6;
+  border-color: #b3653c;
+}
+
+/* Entries */
+entry {
+  background-color: #102c2c;
+  color: #c0b5ab;
+  border-color: #1a4745;
+}
+
+entry > text > placeholder {
+  color: #7a736c;
+}
+
+/* Selection */
+*:selected, selection {
+  background-color: #2a91a2;
+  color: #f0e3d6;
+}
+
+/* Menus */
+menu, menubar, .menu {
+  background-color: #102c2c;
+  color: #c0b5ab;
+  border-color: #1a4745;
+}
+
+menuitem {
+  color: #c0b5ab;
+}
+
+menuitem:hover {
+  background-color: rgba(42, 145, 162, 0.2);
+}
+
+/* Popover */
+popover > contents {
+  background-color: #102c2c;
+  color: #c0b5ab;
+}
+
+/* Notebook */
+notebook > header {
+  background-color: #102c2c;
+  border-color: #1a4745;
+}
+
+notebook > header > tabs > tab {
+  color: #999088;
+  background-color: #102c2c;
+}
+
+notebook > header > tabs > tab:checked {
+  color: #c0b5ab;
+  background-color: #0c2323;
+}
+
+/* Scrollbar */
+scrollbar trough {
+  background-color: #102c2c;
+}
+
+scrollbar slider {
+  background-color: #1a4745;
+}
+
+scrollbar slider:hover {
+  background-color: #2a91a2;
+}
+
+/* Scale */
+scale trough {
+  background-color: #1a4745;
+}
+
+scale trough highlight {
+  background-color: #2a91a2;
+}
+
+/* Progressbar */
+progressbar trough {
+  background-color: #1a4745;
+}
+
+progressbar progress {
+  background-color: #2a91a2;
+}
+
+/* Switch */
+switch {
+  background-color: #1a4745;
+}
+
+switch:checked {
+  background-color: #2a91a2;
+}
+
+/* Check / radio */
+checkbutton > check, radiobutton > radio {
+  background-color: #102c2c;
+  border-color: #1a4745;
+}
+
+checkbutton > check:checked, radiobutton > radio:checked {
+  background-color: #2a91a2;
+  border-color: #2a91a2;
+}
+
+/* Separator */
+separator {
+  background-color: #1a4745;
+}
+
+/* Tooltip */
+tooltip {
+  background-color: #102c2c;
+  color: #c0b5ab;
+  border-color: #1a4745;
+}
+
+/* Statusbar */
+statusbar {
+  background-color: #102c2c;
+  color: #c0b5ab;
+}
+
+/* Combobox */
+combobox > .popup {
+  background-color: #102c2c;
+  color: #c0b5ab;
+}

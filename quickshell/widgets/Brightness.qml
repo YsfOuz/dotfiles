@@ -12,24 +12,22 @@ Item {
 
     SystemPalette { id: palette }
 
-    Component.onCompleted: proc.exec(["brightnessctl", "-m"])
-
-    Process {
+    ProcessWatcher {
         id: proc
-        stdout: SplitParser {
-            onRead: line => {
-                var parts = line.split(",")
-                if (parts.length >= 4) {
-                    var pct = parseInt(parts[3])
-                    if (!isNaN(pct)) root.brightness = pct
-                }
+        command: "sh"
+        processArgs: ["-c", "while true; do brightnessctl -m; sleep 0.1; done"]
+        onRead: line => {
+            var parts = line.split(",")
+            if (parts.length >= 4) {
+                var pct = parseInt(parts[3])
+                if (!isNaN(pct)) root.brightness = pct
             }
         }
     }
 
     Process { id: setProc; onRunningChanged: if (!running) proc.exec(["brightnessctl", "-m"]) }
 
-    Timer { interval: 5000; running: true; repeat: true; onTriggered: proc.exec(["brightnessctl", "-m"]) }
+    Timer { interval: 1000; running: true; repeat: true; onTriggered: proc.exec(["brightnessctl", "-m"]) }
 
     Column {
         id: col
