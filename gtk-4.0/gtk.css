@@ -1,233 +1,88 @@
-/* Verdigris GTK4 Theme — YsfOuz */
-
-/* Named colors */
-@define-color accent_color           #43B3AE;
-@define-color accent_bg_color        #2A91A2;
-@define-color accent_fg_color        #F0E3D6;
-@define-color destructive_color      #B3653C;
-@define-color destructive_bg_color   #B3653C;
-@define-color destructive_fg_color   #F0E3D6;
-@define-color success_color          #48B777;
-@define-color success_bg_color       #48B777;
-@define-color success_fg_color       #0C2323;
-@define-color warning_color          #A08E50;
-@define-color warning_bg_color       #A08E50;
-@define-color warning_fg_color       #0C2323;
-@define-color error_color            #B3653C;
-@define-color error_bg_color         #B3653C;
-@define-color error_fg_color         #F0E3D6;
-@define-color window_bg_color        #0C2323;
-@define-color window_fg_color        #C0B5AB;
-@define-color view_bg_color          #102C2C;
-@define-color view_fg_color          #C0B5AB;
-@define-color headerbar_bg_color     #102C2C;
-@define-color headerbar_fg_color     #F0E3D6;
-@define-color headerbar_border_color #1A4745;
-@define-color headerbar_backdrop_color #0C2323;
-@define-color headerbar_shade_color  rgba(0,0,0,0.25);
-@define-color headerbar_darker_shade_color rgba(0,0,0,0.7);
-@define-color sidebar_bg_color       #0C2323;
-@define-color sidebar_fg_color       #C0B5AB;
-@define-color sidebar_backdrop_color #0C2323;
-@define-color sidebar_border_color   #1A4745;
-@define-color sidebar_shade_color    rgba(0,0,0,0.25);
-@define-color secondary_sidebar_bg_color #102C2C;
-@define-color secondary_sidebar_fg_color #C0B5AB;
-@define-color secondary_sidebar_backdrop_color #0C2323;
-@define-color secondary_sidebar_border_color #1A4745;
-@define-color secondary_sidebar_shade_color rgba(0,0,0,0.25);
-@define-color card_bg_color          #102C2C;
-@define-color card_fg_color          #C0B5AB;
-@define-color card_shade_color       rgba(0,0,0,0.35);
-@define-color dialog_bg_color        #102C2C;
-@define-color dialog_fg_color        #C0B5AB;
-@define-color popover_bg_color       #143837;
-@define-color popover_fg_color       #C0B5AB;
-@define-color popover_shade_color    rgba(0,0,0,0.25);
-@define-color thumbnail_bg_color     #143837;
-@define-color thumbnail_fg_color     #C0B5AB;
-@define-color borders                #1A4745;
-@define-color shade_color            rgba(0,0,0,0.3);
-@define-color scrollbar_outline_color rgba(0,0,0,0.5);
-@define-color link_color             #43B3AE;
-@define-color link_visited_color     #3E5586;
-
-/* ─── Direct rules (libadwaita loads dark palette after user CSS) ─── */
-
-window, .background {
-  background-color: #0C2323;
-  color: #C0B5AB;
-}
-
-headerbar, .titlebar {
-  background-color: #102C2C;
-  color: #F0E3D6;
-  border-bottom-color: #1A4745;
-}
-
-.view {
-  background-color: #102C2C;
-  color: #C0B5AB;
-}
-
-listview, columnview {
-  background-color: #0C2323;
-  color: #C0B5AB;
-}
-
-treeview.view {
-  background-color: #0C2323;
-  color: #C0B5AB;
-}
-
-row { color: #C0B5AB; }
-row:hover { background-color: rgba(42,145,162,0.1); }
-row:selected { background-color: rgba(42,145,162,0.25); color: #F0E3D6; }
-
-.card {
-  background-color: #102C2C;
-  color: #C0B5AB;
-}
-
-.navigation-sidebar, .sidebar {
-  background-color: #0C2323;
-  color: #C0B5AB;
-}
-
-popover > contents {
-  background-color: #143837;
-  color: #C0B5AB;
-}
-
-entry, spinbutton {
-  background-color: #102C2C;
-  color: #C0B5AB;
-  caret-color: #C0B5AB;
-}
-
-textview {
-  background-color: #0C2323;
-  color: #C0B5AB;
-}
-
-textview > text selection {
-  background-color: #2A91A2;
-  color: #F0E3D6;
-}
-
-selection {
-  background-color: #2A91A2;
-  color: #F0E3D6;
-}
-
-notebook > header {
-  background-color: #102C2C;
-  border-color: #1A4745;
-}
-
-notebook > header > tabs > tab { color: #999088; }
-notebook > header > tabs > tab:checked {
-  color: #C0B5AB;
-  background-color: #0C2323;
-}
-
-scrollbar trough { background-color: #102C2C; }
-scrollbar slider { background-color: #1A4745; }
-scrollbar slider:hover { background-color: #2A91A2; }
-
-scale trough {
-  background-color: #1A4745;
-}
-scale trough highlight,
-scale trough fill {
-  background-color: #2A91A2;
-}
-scale > trough > slider {
-  background-color: #C0B5AB;
-}
-scale:hover > trough > slider,
-scale:active > trough > slider {
-  background-color: #F0E3D6;
-}
-
-progressbar > trough {
-  background-color: #1A4745;
-}
-progressbar > trough > progress {
-  background-color: #2A91A2;
-}
-
-switch { background-color: #1A4745; }
-switch:checked { background-color: #2A91A2; }
-switch > slider { background-color: #C0B5AB; }
-switch:hover > slider, switch:active > slider { background-color: #F0E3D6; }
-switch:checked > slider { background-color: #F0E3D6; }
-
-check, radio {
-  background-color: #102C2C;
-  box-shadow: inset 0 0 0 2px #1A4745;
-}
-check:checked, check:indeterminate,
-radio:checked, radio:indeterminate {
-  background-color: #2A91A2;
-  box-shadow: none;
-  color: #F0E3D6;
-}
-check:hover:not(:checked):not(:indeterminate),
-radio:hover:not(:checked):not(:indeterminate) {
-  box-shadow: inset 0 0 0 2px #2A91A2;
-}
-
-separator { background-color: #1A4745; }
-
-/* CSS custom property overrides — libadwaita dark mode hardcodes these */
-:root {
-  --active-toggle-bg-color: #2A91A2;
-  --active-toggle-fg-color: #F0E3D6;
-  --overview-bg-color: #102C2C;
-  --overview-fg-color: #C0B5AB;
-}
-
-/* Toggle group */
-toggle-group {
-  background: rgba(26, 71, 69, 0.5);
-}
-toggle-group > toggle:checked {
-  background-color: #2A91A2;
-  color: #F0E3D6;
-}
-toggle-group > toggle:hover {
-  background-color: rgba(42, 145, 162, 0.15);
-}
-
-/* Buttons */
-button:not(.flat):not(.suggested-action):not(.destructive-action):not(.opaque) {
-  background-color: #102C2C;
-  color: #C0B5AB;
-}
-button:not(.flat):not(.suggested-action):not(.destructive-action):not(.opaque):hover {
-  background-color: #143837;
-}
-button:not(.flat):not(.suggested-action):not(.destructive-action):not(.opaque):active {
-  background-color: #1A4745;
-}
-
-/* Toast */
-toast {
-  background: #143837;
-  color: #C0B5AB;
-}
-
-/* Banner / infobar */
-.app-notification, infobar {
-  background-color: #143837;
-  color: #C0B5AB;
-}
-infobar.info { background-color: #102C2C; }
-infobar.warning { background-color: #3a3215; }
-infobar.error { background-color: #3a1a0e; }
-
-tooltip {
-  background-color: #143837;
-  color: #C0B5AB;
-}
+@define-color accent_color #2A91A2;
+@define-color accent_bg_color #2A91A2;
+@define-color accent_fg_color #0C2323;
+@define-color destructive_color #B3653C;
+@define-color destructive_bg_color #B3653C;
+@define-color destructive_fg_color #0C2323;
+@define-color success_color #48B777;
+@define-color success_bg_color #48B777;
+@define-color success_fg_color #0C2323;
+@define-color warning_color #3E5586;
+@define-color warning_bg_color #3E5586;
+@define-color warning_fg_color #0C2323;
+@define-color error_color #B3653C;
+@define-color error_bg_color #B3653C;
+@define-color error_fg_color #0C2323;
+@define-color window_bg_color #0C2323;
+@define-color window_fg_color #C0B5AB;
+@define-color view_bg_color #0C2323;
+@define-color view_fg_color #C0B5AB;
+@define-color headerbar_bg_color #102C2C;
+@define-color headerbar_fg_color #C0B5AB;
+@define-color headerbar_border_color rgba(16, 44, 44, 0.7);
+@define-color headerbar_backdrop_color @window_bg_color;
+@define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
+@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.07);
+@define-color sidebar_bg_color #102C2C;
+@define-color sidebar_fg_color #C0B5AB;
+@define-color sidebar_backdrop_color @window_bg_color;
+@define-color sidebar_shade_color rgba(0, 0, 0, 0.07);
+@define-color secondary_sidebar_bg_color @sidebar_bg_color;
+@define-color secondary_sidebar_fg_color @sidebar_fg_color;
+@define-color secondary_sidebar_backdrop_color @sidebar_backdrop_color;
+@define-color secondary_sidebar_shade_color @sidebar_shade_color;
+@define-color card_bg_color #102C2C;
+@define-color card_fg_color #C0B5AB;
+@define-color card_shade_color rgba(0, 0, 0, 0.07);
+@define-color dialog_bg_color #102C2C;
+@define-color dialog_fg_color #C0B5AB;
+@define-color popover_bg_color #102C2C;
+@define-color popover_fg_color #C0B5AB;
+@define-color popover_shade_color rgba(0, 0, 0, 0.07);
+@define-color shade_color rgba(0, 0, 0, 0.07);
+@define-color scrollbar_outline_color #143837;
+@define-color blue_1 #2A91A2;
+@define-color blue_2 #2A91A2;
+@define-color blue_3 #2A91A2;
+@define-color blue_4 #2A91A2;
+@define-color blue_5 #2A91A2;
+@define-color green_1 #48B777;
+@define-color green_2 #48B777;
+@define-color green_3 #48B777;
+@define-color green_4 #48B777;
+@define-color green_5 #48B777;
+@define-color yellow_1 #8DA363;
+@define-color yellow_2 #8DA363;
+@define-color yellow_3 #8DA363;
+@define-color yellow_4 #8DA363;
+@define-color yellow_5 #8DA363;
+@define-color orange_1 #A08E50;
+@define-color orange_2 #A08E50;
+@define-color orange_3 #A08E50;
+@define-color orange_4 #A08E50;
+@define-color orange_5 #A08E50;
+@define-color red_1 #B3653C;
+@define-color red_2 #B3653C;
+@define-color red_3 #B3653C;
+@define-color red_4 #B3653C;
+@define-color red_5 #B3653C;
+@define-color purple_1 #3E5586;
+@define-color purple_2 #3E5586;
+@define-color purple_3 #3E5586;
+@define-color purple_4 #3E5586;
+@define-color purple_5 #3E5586;
+@define-color brown_1 #B87333;
+@define-color brown_2 #B87333;
+@define-color brown_3 #B87333;
+@define-color brown_4 #B87333;
+@define-color brown_5 #B87333;
+@define-color light_1 #C0B5AB;
+@define-color light_2 #C0B5AB;
+@define-color light_3 #C0B5AB;
+@define-color light_4 #C0B5AB;
+@define-color light_5 #C0B5AB;
+@define-color dark_1 #C0B5AB;
+@define-color dark_2 #C0B5AB;
+@define-color dark_3 #C0B5AB;
+@define-color dark_4 #C0B5AB;
+@define-color dark_5 #C0B5AB;

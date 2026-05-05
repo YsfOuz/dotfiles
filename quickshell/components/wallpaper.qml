@@ -15,8 +15,9 @@ Variants {
 
         Image {
             anchors.fill: parent
-            source: "/home/yusuf/.config/wallpapers/verdigrisMinimal.png"
-            fillMode: Image.PreserveAspectCrop
+            //source: "/home/yusuf/.config/wallpapers/verdigrisMinimal.png"
+	    source: "/home/yusuf/.config/wallpapers/verdigris.png"
+	    fillMode: Image.PreserveAspectCrop
         }
     }
 }
