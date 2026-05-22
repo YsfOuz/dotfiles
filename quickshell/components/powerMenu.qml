@@ -2,6 +2,7 @@ import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
+import ".."
 
 PanelWindow {
     id: root
@@ -20,6 +21,8 @@ PanelWindow {
 
     MouseArea {
         anchors.fill: parent
+        focus: true
+        Keys.onEscapePressed: root.visible = false
         onClicked: root.visible = false
     }
 
@@ -27,9 +30,9 @@ PanelWindow {
         anchors.centerIn: parent
         width: btnRow.width + 16
         height: btnRow.height + 16
-        color: palette.window
-        radius: 8
-        border { width: 2; color: palette.alternateBase }
+        color: Settings.bg
+        radius: Settings.borderRadius
+        border { width: Settings.borderWidth; color: Settings.borderColor }
 
         MouseArea { anchors.fill: parent }
 
@@ -40,20 +43,20 @@ PanelWindow {
 
             Repeater {
                 model: [
-                    ["󰌾", "Lock",      "qs ipc call lockScreen lock"],
-                    ["󰍃", "Logout",    "loginctl kill-session $XDG_SESSION_ID"],
-                    ["󰤄", "Suspend",   "zzz"],
-                    ["󰒲", "Hibernate", "ZZZ"],
-                    ["󰑓", "Reboot",    "loginctl reboot"],
-                    ["󰐥", "Shutdown",  "loginctl poweroff"],
+                    { icon: "󰌾", label: "Lock",      cmd: "qs ipc call lockScreen lock" },
+                    { icon: "󰍃", label: "Logout",    cmd: "loginctl kill-session $XDG_SESSION_ID" },
+                    { icon: "󰤄", label: "Suspend",   cmd: "zzz" },
+                    { icon: "󰒲", label: "Hibernate", cmd: "ZZZ" },
+                    { icon: "󰑓", label: "Reboot",    cmd: "loginctl reboot" },
+                    { icon: "󰐥", label: "Shutdown",  cmd: "loginctl poweroff" },
                 ]
 
                 delegate: Rectangle {
                     required property var modelData
-                    width: 128
-                    height: 128
-                    radius: 8
-                    color: ma.containsMouse ? palette.highlight : palette.mid
+                    width: Settings.powerMenuBtnSize
+                    height: Settings.powerMenuBtnSize
+                    radius: Settings.borderRadius
+                    color: ma.containsMouse ? Settings.accent : Settings.surface
 
                     MouseArea {
                         id: ma
@@ -61,7 +64,7 @@ PanelWindow {
                         hoverEnabled: true
                         onClicked: {
                             root.visible = false
-                            proc.command = ["sh", "-c", modelData[2]]
+                            proc.command = ["sh", "-c", modelData.cmd]
                             proc.running = false
                             proc.running = true
                         }
@@ -73,16 +76,16 @@ PanelWindow {
 
                         Text {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            text: modelData[0]
-                            color: ma.containsMouse ? palette.highlightedText : palette.windowText
-                            font.pixelSize: 64
+                            text: modelData.icon
+                            color: ma.containsMouse ? Settings.accentText : Settings.text
+                            font.pixelSize: Math.round(Settings.powerMenuBtnSize * 0.5)
                         }
 
                         Text {
                             anchors.horizontalCenter: parent.horizontalCenter
-                            text: modelData[1]
-                            color: ma.containsMouse ? palette.highlightedText : palette.windowText
-                            font.pixelSize: 16
+                            text: modelData.label
+                            color: ma.containsMouse ? Settings.accentText : Settings.text
+                            font.pixelSize: Math.round(Settings.powerMenuBtnSize * 0.125)
                         }
                     }
                 }

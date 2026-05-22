@@ -4,6 +4,7 @@ import Quickshell.Wayland
 import Quickshell.Services.Pam
 import QtQuick
 import QtQuick.Layouts
+import ".."
 
 Item {
     id: root
@@ -50,7 +51,7 @@ Item {
         id: sessionLock
 
         WlSessionLockSurface {
-            color: palette.window
+            color: Settings.bg
 
             MouseArea { anchors.fill: parent }
 
@@ -70,9 +71,9 @@ Item {
 
                     Text {
                         anchors.horizontalCenter: parent.horizontalCenter
-                        text: Qt.formatTime(new Date(), "HH:mm")
-                        color: palette.windowText
-                        font.pixelSize: 96
+                        text: Qt.formatTime(new Date(), Settings.lockTimeFormat)
+                        color: Settings.text
+                        font.pixelSize: Settings.lockClockFontSize
                         font.weight: Font.Bold
 
                         Timer {
@@ -80,25 +81,34 @@ Item {
                             running: true
                             repeat: true
                             triggeredOnStart: true
-                            onTriggered: parent.text = Qt.formatTime(new Date(), "HH:mm")
+                            onTriggered: parent.text = Qt.formatTime(new Date(), Settings.lockTimeFormat)
                         }
                     }
 
                     Text {
+                        id: dateText
                         anchors.horizontalCenter: parent.horizontalCenter
-                        text: Qt.formatDate(new Date(), "dddd, MMMM d")
-                        color: palette.windowText
+                        text: Qt.formatDate(new Date(), Settings.lockDateFormat)
+                        color: Settings.subtext
                         font.pixelSize: 24
+
+                        Timer {
+                            interval: 60000
+                            running: true
+                            repeat: true
+                            triggeredOnStart: true
+                            onTriggered: dateText.text = Qt.formatDate(new Date(), Settings.lockDateFormat)
+                        }
                     }
                 }
 
                 Rectangle {
                     anchors.horizontalCenter: parent.horizontalCenter
-                    width: 480
+                    width: Settings.lockInputWidth
                     height: dialogLayout.implicitHeight + 32
-                    radius: 8
-                    color: palette.base
-                    border { width: 2; color: palette.alternateBase }
+                    radius: Settings.borderRadius
+                    color: Settings.surface
+                    border { width: Settings.borderWidth; color: Settings.borderColor }
 
                     MouseArea { anchors.fill: parent }
 
@@ -110,7 +120,7 @@ Item {
                         Text {
                             Layout.alignment: Qt.AlignHCenter
                             text: root.fullName
-                            color: palette.windowText
+                            color: Settings.text
                             font.pixelSize: 16
                             font.weight: Font.DemiBold
                         }
@@ -118,18 +128,18 @@ Item {
                         Rectangle {
                             Layout.fillWidth: true
                             height: 32
-                            radius: 8
-                            color: palette.alternateBase
+                            radius: Settings.borderRadius
+                            color: Settings.bg
                             border {
-                                width: 2
-                                color: passwordField.activeFocus ? palette.highlight : palette.mid
+                                width: Settings.borderWidth
+                                color: passwordField.activeFocus ? Settings.accent : Settings.borderColor
                             }
 
                             TextInput {
                                 id: passwordField
                                 anchors { left: parent.left; right: parent.right; verticalCenter: parent.verticalCenter; margins: 10 }
                                 echoMode: TextInput.Password
-                                color: palette.windowText
+                                color: Settings.text
                                 font.pixelSize: 16
                                 focus: true
                                 onTextChanged: root.pamError = ""
@@ -140,7 +150,7 @@ Item {
                         Text {
                             Layout.alignment: Qt.AlignHCenter
                             text: root.pamError
-                            color: "#e74c3c"
+                            color: Settings.danger
                             font.pixelSize: 12
                             visible: root.pamError !== ""
                         }

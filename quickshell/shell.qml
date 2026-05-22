@@ -12,4 +12,6 @@ ShellRoot {
     PowerMenu{}
     Notifications{}
     LockScreen{}
+    PolkitAgent{}
+    IdleManager{}
 }

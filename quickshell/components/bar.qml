@@ -1,29 +1,35 @@
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
-import "widgets"
+import ".."
 
 PanelWindow {
     id: barWindow
-    implicitWidth: 48
+    implicitWidth: Settings.barWidth
     color: "transparent"
-    anchors {
-        left: true
-        top: true
-        bottom: true
-    }
-    margins {
-        left: 8
-        top: 8
-        bottom: 8
-    }
+    anchors { left: true; top: true; bottom: true }
+    margins { left: Settings.barMargin; top: Settings.barMargin; bottom: Settings.barMargin }
+
+    readonly property var moduleMap: ({
+        "workspaces":    "widgets/workspaces.qml",
+        "clock":         "widgets/clock.qml",
+        "tray":          "widgets/systemTray.qml",
+        "idleInhibitor": "widgets/idleInhibitor.qml",
+        "mic":           "widgets/mic.qml",
+        "volume":        "widgets/volume.qml",
+        "brightness":    "widgets/brightness.qml",
+        "powerProfile":  "widgets/powerProfile.qml",
+        "battery":       "widgets/battery.qml",
+    })
+
     Rectangle {
-        color: palette.window 
         anchors.fill: parent
-        radius: 8
+        color: Settings.bg
+        radius: Settings.borderRadius
         border {
-            width: 2 
-            color: palette.alternateBase
+            width: Settings.borderWidth
+            color: Settings.borderColor
         }
     }
 
@@ -31,24 +37,46 @@ PanelWindow {
         spacing: 0
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
-        Workspaces {}
+        Repeater {
+            model: Settings.topModules
+            Loader {
+                required property string modelData
+                source: barWindow.moduleMap[modelData] ? Qt.resolvedUrl(barWindow.moduleMap[modelData]) : ""
+                Layout.alignment: Qt.AlignHCenter
+                Layout.margins: Settings.widgetPadding
+                onLoaded: if (modelData === "tray" || modelData === "idleInhibitor") item.window = barWindow
+            }
+        }
     }
 
     ColumnLayout {
         spacing: 0
         anchors.centerIn: parent
-        Clock {}
+        Repeater {
+            model: Settings.centerModules
+            Loader {
+                required property string modelData
+                source: barWindow.moduleMap[modelData] ? Qt.resolvedUrl(barWindow.moduleMap[modelData]) : ""
+                Layout.alignment: Qt.AlignHCenter
+                Layout.margins: Settings.widgetPadding
+                onLoaded: if (modelData === "tray" || modelData === "idleInhibitor") item.window = barWindow
+            }
+        }
     }
 
     ColumnLayout {
         spacing: 0
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
-        SystemTray { window: barWindow }
-        Mic{}
-        Volume{}
-        Brightness{}
-        PowerProfile {}
-        Battery {}
+        Repeater {
+            model: Settings.bottomModules
+            Loader {
+                required property string modelData
+                source: barWindow.moduleMap[modelData] ? Qt.resolvedUrl(barWindow.moduleMap[modelData]) : ""
+                Layout.alignment: Qt.AlignHCenter
+                Layout.margins: Settings.widgetPadding
+                onLoaded: if (modelData === "tray" || modelData === "idleInhibitor") item.window = barWindow
+            }
+        }
     }
 }

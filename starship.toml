@@ -1,0 +1,62 @@
+format = """
+[┏━━━━━━━](bold cyan)[$directory](bold white)[$git_branch$git_commit$git_status](blue)[$c$rust$python$zig$cmake$meson$lua$java$haskell$package](green)[$memory_usage](dimmed white)
+[┗━━━](bold cyan)$hostname@$username[━━](bold cyan)$cmd_duration[━━](bold cyan)$character
+"""
+
+[username]
+format = "[$user]($style)"
+show_always = true
+
+[character]
+success_symbol = "[>_](bold green)"
+error_symbol = "[x_](bold red)"
+
+[c]
+symbol = " "
+
+[cpp]
+symbol = " "
+
+[cmake]
+symbol = " "
+
+[directory]
+read_only = " 󰌾"
+
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style)"
+ssh_only = false
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[package]
+symbol = "󰏗 "
+
+[python]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[zig]
+symbol = " "

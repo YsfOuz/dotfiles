@@ -1,14 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Services.Pipewire
+import "../.."
 
 Rectangle {
-    Layout.alignment: Qt.AlignHCenter
-    Layout.margins: 8
-    implicitWidth: 32
-    implicitHeight: 32
-    radius: 8
-    color: palette.mid
+    implicitWidth: Settings.widgetSize
+    implicitHeight: Settings.widgetSize
+    radius: Settings.borderRadius
+
+    color: Settings.surface
 
     PwObjectTracker { objects: [Pipewire.defaultAudioSource] }
 
@@ -18,8 +18,8 @@ Rectangle {
     Text {
         anchors.centerIn: parent
         text: muted ? "󰍭" : "󰍬"
-        color: palette.windowText
-        font.pixelSize: 16
+        color: Settings.text
+        font.pixelSize: Settings.iconFont
     }
 
     MouseArea {

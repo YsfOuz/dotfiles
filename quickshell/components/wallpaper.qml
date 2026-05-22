@@ -1,6 +1,7 @@
 import Quickshell
 import Quickshell.Wayland
 import QtQuick
+import ".."
 
 Variants {
     model: Quickshell.screens
@@ -15,9 +16,8 @@ Variants {
 
         Image {
             anchors.fill: parent
-            //source: "/home/yusuf/.config/wallpapers/verdigrisMinimal.png"
-	    source: "/home/yusuf/.config/wallpapers/verdigris.png"
-	    fillMode: Image.PreserveAspectCrop
+            source: Settings.wallpaperPath
+            fillMode: Settings.wallpaperFillMode
         }
     }
 }

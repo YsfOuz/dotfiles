@@ -1,0 +1,15 @@
+theme = "verdigris"
+[editor]
+line-number = "relative"
+scrolloff = 8
+cursorline = true
+bufferline = "multiple"
+popup-border = "all"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true

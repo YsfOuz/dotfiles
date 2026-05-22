@@ -1,0 +1,15 @@
+# Verdigris — Alacritty color theme
+
+[colors.primary]
+background = "#0E2524"
+foreground = "#E9CBAF"
+
+[colors.normal]
+black   = "#0E2524"
+red     = "#B63A3A"
+green   = "#3AB63A"
+yellow  = "#B5B63A"
+blue    = "#3A3AB6"
+magenta = "#B53AB6"
+cyan    = "#3AB6B6"
+white   = "#F4E5D7"

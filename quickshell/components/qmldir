@@ -5,3 +5,5 @@ AppLauncher 1.0 appLauncher.qml
 PowerMenu 1.0 powerMenu.qml
 Notifications 1.0 notifications.qml
 LockScreen 1.0 lockScreen.qml
+PolkitAgent 1.0 polkitAgent.qml
+IdleManager 1.0 idleManager.qml

@@ -1,41 +1,18 @@
+[general]
+import = ["verdigris.toml"]
+
 [font]
 normal = { family = "Iosevka Nerd Font" }
-size = 12.0
-
-[colors.primary]
-background = "#0C2323"
-foreground = "#C0B5AB"
-dim_foreground = "#999088"
-bright_foreground = "#F0E3D6"
-
-[colors.cursor]
-text   = "#0C2323"
-cursor = "#43B3AE"
-
-[colors.selection]
-text       = "#F0E3D6"
-background = "#143837"
-
-[colors.normal]
-black   = "#0C2323"
-red     = "#B3653C"
-green   = "#48B777"
-yellow  = "#A08E50"
-blue    = "#2A91A2"
-magenta = "#3E5586"
-cyan    = "#43B3AE"
-white   = "#C0B5AB"
-
-[colors.bright]
-black   = "#1A4745"
-red     = "#B3653C"
-green   = "#48B777"
-yellow  = "#8DA363"
-blue    = "#2A91A2"
-magenta = "#3E5586"
-cyan    = "#43B3AE"
-white   = "#F0E3D6"
+size = 16.0
 
 [window]
-opacity = 1.0 
 padding = { x = 4, y = 4 }
+
+[scrolling]
+history = 100000
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+hide_when_typing = true

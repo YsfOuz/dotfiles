@@ -1,88 +1,105 @@
-@define-color accent_color #2A91A2;
-@define-color accent_bg_color #2A91A2;
-@define-color accent_fg_color #0C2323;
-@define-color destructive_color #B3653C;
-@define-color destructive_bg_color #B3653C;
-@define-color destructive_fg_color #0C2323;
-@define-color success_color #48B777;
-@define-color success_bg_color #48B777;
-@define-color success_fg_color #0C2323;
-@define-color warning_color #3E5586;
-@define-color warning_bg_color #3E5586;
-@define-color warning_fg_color #0C2323;
-@define-color error_color #B3653C;
-@define-color error_bg_color #B3653C;
-@define-color error_fg_color #0C2323;
-@define-color window_bg_color #0C2323;
-@define-color window_fg_color #C0B5AB;
-@define-color view_bg_color #0C2323;
-@define-color view_fg_color #C0B5AB;
-@define-color headerbar_bg_color #102C2C;
-@define-color headerbar_fg_color #C0B5AB;
-@define-color headerbar_border_color rgba(16, 44, 44, 0.7);
-@define-color headerbar_backdrop_color @window_bg_color;
-@define-color headerbar_shade_color rgba(0, 0, 0, 0.07);
-@define-color headerbar_darker_shade_color rgba(0, 0, 0, 0.07);
-@define-color sidebar_bg_color #102C2C;
-@define-color sidebar_fg_color #C0B5AB;
-@define-color sidebar_backdrop_color @window_bg_color;
-@define-color sidebar_shade_color rgba(0, 0, 0, 0.07);
-@define-color secondary_sidebar_bg_color @sidebar_bg_color;
-@define-color secondary_sidebar_fg_color @sidebar_fg_color;
-@define-color secondary_sidebar_backdrop_color @sidebar_backdrop_color;
-@define-color secondary_sidebar_shade_color @sidebar_shade_color;
-@define-color card_bg_color #102C2C;
-@define-color card_fg_color #C0B5AB;
-@define-color card_shade_color rgba(0, 0, 0, 0.07);
-@define-color dialog_bg_color #102C2C;
-@define-color dialog_fg_color #C0B5AB;
-@define-color popover_bg_color #102C2C;
-@define-color popover_fg_color #C0B5AB;
-@define-color popover_shade_color rgba(0, 0, 0, 0.07);
-@define-color shade_color rgba(0, 0, 0, 0.07);
-@define-color scrollbar_outline_color #143837;
-@define-color blue_1 #2A91A2;
-@define-color blue_2 #2A91A2;
-@define-color blue_3 #2A91A2;
-@define-color blue_4 #2A91A2;
-@define-color blue_5 #2A91A2;
-@define-color green_1 #48B777;
-@define-color green_2 #48B777;
-@define-color green_3 #48B777;
-@define-color green_4 #48B777;
-@define-color green_5 #48B777;
-@define-color yellow_1 #8DA363;
-@define-color yellow_2 #8DA363;
-@define-color yellow_3 #8DA363;
-@define-color yellow_4 #8DA363;
-@define-color yellow_5 #8DA363;
-@define-color orange_1 #A08E50;
-@define-color orange_2 #A08E50;
-@define-color orange_3 #A08E50;
-@define-color orange_4 #A08E50;
-@define-color orange_5 #A08E50;
-@define-color red_1 #B3653C;
-@define-color red_2 #B3653C;
-@define-color red_3 #B3653C;
-@define-color red_4 #B3653C;
-@define-color red_5 #B3653C;
-@define-color purple_1 #3E5586;
-@define-color purple_2 #3E5586;
-@define-color purple_3 #3E5586;
-@define-color purple_4 #3E5586;
-@define-color purple_5 #3E5586;
-@define-color brown_1 #B87333;
-@define-color brown_2 #B87333;
-@define-color brown_3 #B87333;
-@define-color brown_4 #B87333;
-@define-color brown_5 #B87333;
-@define-color light_1 #C0B5AB;
-@define-color light_2 #C0B5AB;
-@define-color light_3 #C0B5AB;
-@define-color light_4 #C0B5AB;
-@define-color light_5 #C0B5AB;
-@define-color dark_1 #C0B5AB;
-@define-color dark_2 #C0B5AB;
-@define-color dark_3 #C0B5AB;
-@define-color dark_4 #C0B5AB;
-@define-color dark_5 #C0B5AB;
+/* Verdigris — GTK 4 / libadwaita color theme
+ * Palette: YsfOuz/Verdigris (Base16)
+ * Place at: ~/.config/gtk-4.0/gtk.css
+ */
+
+/* ── GTK3 compat names (adw-gtk3 reads these even in gtk-4.0/) ─────────── */
+@define-color theme_bg_color              #0E2524;
+@define-color theme_fg_color              #E9CBAF;
+@define-color theme_base_color            #0E2524;
+@define-color theme_text_color            #E9CBAF;
+@define-color theme_selected_bg_color     #3AB6B6;
+@define-color theme_selected_fg_color     #0E2524;
+@define-color insensitive_bg_color        #153836;
+@define-color insensitive_fg_color        rgba(233, 203, 175, 0.50);
+@define-color borders                     rgba(233, 203, 175, 0.15);
+@define-color warning_color               #B5B63A;
+@define-color error_color                 #B63A3A;
+@define-color success_color               #3AB63A;
+
+/* ── libadwaita CSS custom properties ──────────────────────────────────── */
+* {
+  /* Accent (base0C — Verdigris cyan) */
+  --accent-bg-color:                  #3AB6B6;
+  --accent-fg-color:                  #0E2524;
+  --accent-color:                     oklab(from #3AB6B6 max(l, 0.85) a b);
+
+  /* Destructive (base08 — red) */
+  --destructive-bg-color:             #B63A3A;
+  --destructive-fg-color:             #F4E5D7;
+  --destructive-color:                oklab(from #B63A3A max(l, 0.85) a b);
+
+  /* Success (base0B — green) */
+  --success-bg-color:                 #3AB63A;
+  --success-fg-color:                 #0E2524;
+  --success-color:                    oklab(from #3AB63A max(l, 0.85) a b);
+
+  /* Warning (base0A — yellow) */
+  --warning-bg-color:                 #B5B63A;
+  --warning-fg-color:                 #0E2524;
+  --warning-color:                    oklab(from #B5B63A max(l, 0.85) a b);
+
+  /* Error (base08 — red) */
+  --error-bg-color:                   #B63A3A;
+  --error-fg-color:                   #F4E5D7;
+  --error-color:                      oklab(from #B63A3A max(l, 0.85) a b);
+
+  /* Window (base00 / base05) */
+  --window-bg-color:                  #0E2524;
+  --window-fg-color:                  #E9CBAF;
+
+  /* View — text editors, list views (base00 / base05) */
+  --view-bg-color:                    #0E2524;
+  --view-fg-color:                    #E9CBAF;
+
+  /* Header bar (base01 / base05) */
+  --headerbar-bg-color:               #153836;
+  --headerbar-fg-color:               #E9CBAF;
+  --headerbar-border-color:           #E9CBAF;
+  --headerbar-backdrop-color:         #0E2524;
+  --headerbar-shade-color:            rgba(0, 0, 0, 0.36);
+  --headerbar-darker-shade-color:     rgba(0, 0, 0, 0.72);
+
+  /* Sidebar (base01 / base05) */
+  --sidebar-bg-color:                 #153836;
+  --sidebar-fg-color:                 #E9CBAF;
+  --sidebar-backdrop-color:           #112F2F;
+  --sidebar-border-color:             rgba(0, 0, 0, 0.36);
+  --sidebar-shade-color:              rgba(0, 0, 0, 0.25);
+
+  /* Secondary sidebar */
+  --secondary-sidebar-bg-color:       #112F2F;
+  --secondary-sidebar-fg-color:       #E9CBAF;
+  --secondary-sidebar-backdrop-color: #0E2524;
+  --secondary-sidebar-border-color:   rgba(0, 0, 0, 0.36);
+  --secondary-sidebar-shade-color:    rgba(0, 0, 0, 0.25);
+
+  /* Card / boxed lists */
+  --card-bg-color:                    rgba(255, 255, 255, 0.08);
+  --card-fg-color:                    #E9CBAF;
+  --card-shade-color:                 rgba(0, 0, 0, 0.36);
+
+  /* Tab overview (base02 / base03) */
+  --overview-bg-color:                #1C4A48;
+  --overview-fg-color:                #E9CBAF;
+  --thumbnail-bg-color:               #225D5A;
+  --thumbnail-fg-color:               #E9CBAF;
+
+  /* Active toggle */
+  --active-toggle-bg-color:           rgba(255, 255, 255, 0.20);
+  --active-toggle-fg-color:           #E9CBAF;
+
+  /* Dialog (base02) */
+  --dialog-bg-color:                  #1C4A48;
+  --dialog-fg-color:                  #E9CBAF;
+
+  /* Popover (base02) */
+  --popover-bg-color:                 #1C4A48;
+  --popover-fg-color:                 #E9CBAF;
+  --popover-shade-color:              rgba(0, 0, 0, 0.25);
+
+  /* Miscellaneous */
+  --shade-color:                      rgba(0, 0, 0, 0.25);
+  --scrollbar-outline-color:          rgba(0, 0, 0, 0.50);
+}
+@import 'colors.css';

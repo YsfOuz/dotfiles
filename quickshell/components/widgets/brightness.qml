@@ -1,14 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Io
+import "../.."
 
 Rectangle {
-    Layout.alignment: Qt.AlignHCenter
-    Layout.margins: 8
-    implicitWidth: 32
-    implicitHeight: 48
-    radius: 8
-    color: palette.mid
+    implicitWidth: Settings.widgetSize
+    implicitHeight: Settings.widgetSize + 16
+    radius: Settings.borderRadius
+
+    color: Settings.surface
 
     property int current: 0
     property int max: 1
@@ -17,18 +17,14 @@ Rectangle {
     Process {
         id: getProc
         command: ["brightnessctl", "g"]
-        stdout: SplitParser {
-            onRead: line => current = parseInt(line.trim()) || 0
-        }
+        stdout: SplitParser { onRead: line => current = parseInt(line.trim()) || 0 }
     }
 
     Process {
         id: getMax
         command: ["brightnessctl", "m"]
         running: true
-        stdout: SplitParser {
-            onRead: line => max = parseInt(line.trim()) || 1
-        }
+        stdout: SplitParser { onRead: line => max = parseInt(line.trim()) || 1 }
     }
 
     Process {
@@ -40,9 +36,7 @@ Rectangle {
         id: watchProc
         command: ["udevadm", "monitor", "--subsystem-match=backlight"]
         running: true
-        stdout: SplitParser {
-            onRead: _ => { getProc.running = false; getProc.running = true }
-        }
+        stdout: SplitParser { onRead: _ => { getProc.running = false; getProc.running = true } }
     }
 
     Component.onCompleted: { getProc.running = false; getProc.running = true }
@@ -53,22 +47,23 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: pct > 66 ? "󰃠" : pct > 33 ? "󰃟" : "󰃝"
-            color: palette.windowText
-            font.pixelSize: 16
+            color: Settings.text
+            font.pixelSize: Settings.iconFont
         }
 
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: pct + "%"
-            color: palette.windowText
-            font.pixelSize: 12
+            color: Settings.text
+            font.pixelSize: Settings.labelFont
         }
     }
 
     MouseArea {
         anchors.fill: parent
         onWheel: wheel => {
-            setProc.command = ["brightnessctl", "s", wheel.angleDelta.y > 0 ? "+5%" : "5%-", "--min-value", "5%"]
+            const step = Settings.brightnessStep
+            setProc.command = ["brightnessctl", "s", wheel.angleDelta.y > 0 ? "+" + step : step + "-", "--min-value", step]
             setProc.running = false
             setProc.running = true
         }

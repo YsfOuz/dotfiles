@@ -1,0 +1,11 @@
+#!/bin/sh
+
+riverctl spawn pipewire
+wlr-randr --output eDP-1 --adaptive-sync enabled
+riverctl spawn "rivertile -view-padding 4 -outer-padding 4 -main-ratio 0.5"
+riverctl default-layout rivertile
+riverctl spawn quickshell
+riverctl spawn nm-applet
+
+riverctl map normal Super R spawn "$HOME/.config/river/config"
+riverctl spawn "$HOME/.config/river/config"

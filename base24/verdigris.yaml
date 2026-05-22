@@ -1,0 +1,69 @@
+scheme: "Verdigris"
+author: "YsfOuz"
+
+# =============================================================================
+# ANCHORS
+# =============================================================================
+#
+# Verdigris : #43B3AE  H=49% S=46% L=48%
+# Copper    : #B87333  H=8%  S=57% L=46%
+#
+# =============================================================================
+# FORMULAS
+# =============================================================================
+#
+# BACKGROUNDS (base00–03)
+#   H=49%  S=46%  L = 10, 15, 20, 25%  (verdigris hue/sat, step L by +5%)
+#
+# FOREGROUNDS (base04–07)
+#   H=8%   S=57%  L = 75, 80, 85, 90%  (copper hue/sat, step L by +5%)
+#
+# ACCENTS (base08–0F)
+#   H = pure hue of each color
+#   S = avg(verdigris S, copper S) = avg(46, 57) = 51.5%
+#   L = avg(verdigris L, copper L) = avg(48, 46) = 47%
+#
+#   Pure hue anchors:
+#     Red     H=0%     Orange  H=8%     Yellow  H=16.7%  Green   H=33.3%
+#     Cyan    H=50%    Blue    H=66.7%  Magenta H=83.3%  Rose    H=94%
+#
+#   Note: Rose replaces Brown as base0F — distinct warm hue, fits aged-metal feel
+#
+# EXTENDED (base10–17)
+#   Same H as matching accent
+#   S = accent S × 0.5  =  51.5% × 0.5  =  25.8%
+#   L = accent L × 0.75 =  47%   × 0.75 =  35.2%
+#
+# =============================================================================
+
+# --- Backgrounds (verdigris H=49% S=46%, L steps +5%) ---
+base00: "0E2524"  # L=10% — default background
+base01: "153836"  # L=15% — panels, sidebars, status bars
+base02: "1C4A48"  # L=20% — selection background
+base03: "225D5A"  # L=25% — comments, line numbers, invisibles
+
+# --- Foregrounds (copper H=8% S=57%, L steps +5%) ---
+base04: "E4BE9B"  # L=75% — dark foreground, text on base01/02 surfaces
+base05: "E9CBAF"  # L=80% — default foreground, main text, caret
+base06: "EFD8C3"  # L=85% — light foreground (rarely used)
+base07: "F4E5D7"  # L=90% — lightest (rarely used)
+
+# --- Accents (H=pure, S=51.5%, L=47%) ---
+base08: "B63A3A"  # Red     H=0%    — variables, errors, deleted diff
+base09: "B6753A"  # Orange  H=8%    — constants, integers, booleans
+base0A: "B5B63A"  # Yellow  H=16.7% — classes, search highlight, warnings
+base0B: "3AB63A"  # Green   H=33.3% — strings, inserted diff, success
+base0C: "3AB6B6"  # Cyan    H=50%   — support, regex, escape chars
+base0D: "3A3AB6"  # Blue    H=66.7% — functions, methods, headings
+base0E: "B53AB6"  # Magenta H=83.3% — keywords, storage, selectors
+base0F: "B63A67"  # Rose    H=94%   — deprecated, embedded language tags
+
+# --- Extended (H=accent, S=51.5%×0.5=25.8%, L=47%×0.75=35.2%) ---
+base10: "714343"  # Red muted
+base11: "715943"  # Orange muted
+base12: "717143"  # Yellow muted
+base13: "437143"  # Green muted
+base14: "437171"  # Cyan muted
+base15: "434371"  # Blue muted
+base16: "714371"  # Magenta muted
+base17: "714353"  # Rose muted

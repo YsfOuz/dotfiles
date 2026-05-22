@@ -1,14 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Services.Pipewire
+import "../.."
 
 Rectangle {
-    Layout.alignment: Qt.AlignHCenter
-    Layout.margins: 8
-    implicitWidth: 32
-    implicitHeight: 48
-    radius: 8
-    color: palette.mid
+    implicitWidth: Settings.widgetSize
+    implicitHeight: Settings.widgetSize + 16
+    radius: Settings.borderRadius
+
+    color: Settings.surface
 
     PwObjectTracker { objects: [Pipewire.defaultAudioSink] }
 
@@ -22,16 +22,16 @@ Rectangle {
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             text: muted ? "󰝟" : pct > 50 ? "󰕾" : "󰕿"
-            color: palette.windowText
-            font.pixelSize: 16
+            color: Settings.text
+            font.pixelSize: Settings.iconFont
         }
 
         Text {
-            visible: muted ? false : true
+            visible: !muted
             anchors.horizontalCenter: parent.horizontalCenter
             text: pct + "%"
-            color: palette.windowText
-            font.pixelSize: 12
+            color: Settings.text
+            font.pixelSize: Settings.labelFont
         }
     }
 
@@ -40,7 +40,7 @@ Rectangle {
         onClicked: if (audio) audio.muted = !audio.muted
         onWheel: wheel => {
             if (!audio) return
-            audio.volume = Math.max(0, Math.min(1.0, audio.volume + (wheel.angleDelta.y > 0 ? 0.05 : -0.05)))
+            audio.volume = Math.max(0, Math.min(1.0, audio.volume + (wheel.angleDelta.y > 0 ? Settings.volumeStep : -Settings.volumeStep)))
         }
     }
 }

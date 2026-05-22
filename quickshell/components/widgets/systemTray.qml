@@ -1,11 +1,13 @@
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Services.SystemTray
+import "../.."
 
 ColumnLayout {
-    spacing: 0
-    Layout.alignment: Qt.AlignHCenter
+    spacing: 4
     property var window
+
+    readonly property int itemSize: Math.round(Settings.widgetSize * 0.75)
 
     Repeater {
         model: SystemTray.items
@@ -14,10 +16,8 @@ ColumnLayout {
             id: trayItem
             required property var modelData
 
-            Layout.alignment: Qt.AlignHCenter
-            Layout.topMargin: 4
-            implicitWidth: 24
-            implicitHeight: 24
+            implicitWidth: itemSize
+            implicitHeight: itemSize
 
             Image {
                 anchors.fill: parent
@@ -31,14 +31,14 @@ ColumnLayout {
                     return "image://icon/" + icon
                 }
                 fillMode: Image.PreserveAspectFit
-                sourceSize.width: 24
-                sourceSize.height: 24
+                sourceSize.width: itemSize
+                sourceSize.height: itemSize
             }
 
             MouseArea {
                 anchors.fill: parent
                 acceptedButtons: Qt.LeftButton | Qt.RightButton
-                onClicked: (mouse) => {
+                onClicked: mouse => {
                     if (mouse.button === Qt.RightButton && trayItem.modelData.hasMenu) {
                         var pos = trayItem.mapToItem(null, trayItem.width, 0)
                         trayItem.modelData.display(window, pos.x, pos.y)

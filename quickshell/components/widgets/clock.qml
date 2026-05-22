@@ -1,16 +1,16 @@
 import QtQuick
 import QtQuick.Layouts
+import "../.."
 
 Rectangle {
-    Layout.alignment: Qt.AlignHCenter
-    Layout.margins: 8
-    implicitWidth: 48
-    implicitHeight: 96
-    radius: 8
-    color: palette.mid
-    border{
-        width: 2
-        color: palette.alternateBase
+    implicitWidth: Settings.barWidth
+    implicitHeight: Settings.clockH
+    radius: Settings.borderRadius
+
+    color: Settings.surface
+    border {
+        width: Settings.borderWidth
+        color: Settings.borderColor
     }
 
     Column {
@@ -19,8 +19,8 @@ Rectangle {
         Text {
             id: hours
             anchors.horizontalCenter: parent.horizontalCenter
-            color: palette.highlightedText
-            font.pixelSize: 40
+            color: Settings.text
+            font.pixelSize: Settings.clockHourFont
             font.weight: Font.Bold
             horizontalAlignment: Text.AlignHCenter
         }
@@ -28,8 +28,8 @@ Rectangle {
         Text {
             id: minutes
             anchors.horizontalCenter: parent.horizontalCenter
-            color: palette.text
-            font.pixelSize: 32
+            color: Settings.subtext
+            font.pixelSize: Settings.clockMinFont
             font.weight: Font.Bold
             horizontalAlignment: Text.AlignHCenter
         }

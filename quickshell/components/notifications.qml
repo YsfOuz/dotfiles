@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import Quickshell.Services.Notifications
 import QtQuick
 import QtQuick.Layouts
+import ".."
 
 Item {
     id: root
@@ -14,9 +15,8 @@ Item {
     function topOffset(idx) {
         var _ = root.heightsVersion
         var top = 8
-        for (var i = 0; i < idx; i++) {
+        for (var i = 0; i < idx; i++)
             top += (root.notifHeights[i] || 80) + 8
-        }
         return top
     }
 
@@ -52,7 +52,7 @@ Item {
             color: "transparent"
             anchors { top: true; right: true }
             margins { top: root.topOffset(myIndex); right: 8 }
-            implicitWidth: 320
+            implicitWidth: Settings.notifWidth
             implicitHeight: notifCard.height
             WlrLayershell.layer: WlrLayer.Overlay
             WlrLayershell.keyboardFocus: WlrKeyboardFocus.None
@@ -68,13 +68,14 @@ Item {
 
             Rectangle {
                 id: notifCard
-                width: 320
+                width: Settings.notifWidth
                 height: cardLayout.implicitHeight + 16
-                radius: 8
-                color: palette.window
+                radius: Settings.borderRadius
+
+                color: Settings.bg
                 border {
-                    width: 2
-                    color: modelData.urgency === 2 ? "#e74c3c" : palette.alternateBase
+                    width: Settings.borderWidth
+                    color: modelData.urgency === 2 ? Settings.danger : Settings.borderColor
                 }
 
                 property var notif: modelData
@@ -86,8 +87,8 @@ Item {
                 }
 
                 Timer {
-                    interval: modelData.expireTimeout > 0 ? modelData.expireTimeout : 5000
-                    running: modelData.expireTimeout !== 0
+                    interval: modelData.expireTimeout > 0 ? modelData.expireTimeout : Settings.notifDefaultTimeout
+                    running: modelData.expireTimeout > 0
                     onTriggered: root.dismiss(modelData)
                 }
 
@@ -119,12 +120,12 @@ Item {
                             Rectangle {
                                 anchors.fill: parent
                                 visible: !iconImg.visible
-                                radius: 8
-                                color: palette.highlight
+                                radius: Settings.borderRadius
+                                color: Settings.accent
                                 Text {
                                     anchors.centerIn: parent
                                     text: modelData.appName ? modelData.appName[0].toUpperCase() : "?"
-                                    color: palette.highlightedText
+                                    color: Settings.accentText
                                     font.pixelSize: 12
                                     font.weight: Font.Bold
                                 }
@@ -133,7 +134,7 @@ Item {
 
                         Text {
                             text: modelData.appName
-                            color: palette.windowText
+                            color: Settings.subtext
                             font.pixelSize: 12
                             Layout.fillWidth: true
                             elide: Text.ElideRight
@@ -141,7 +142,7 @@ Item {
 
                         Text {
                             text: "✕"
-                            color: palette.windowText
+                            color: Settings.text
                             opacity: closeArea.containsMouse ? 1 : 0.5
                             font.pixelSize: 12
                             MouseArea {
@@ -155,7 +156,7 @@ Item {
 
                     Text {
                         text: modelData.summary
-                        color: palette.windowText
+                        color: Settings.text
                         font.pixelSize: 12
                         font.weight: Font.DemiBold
                         Layout.fillWidth: true
@@ -165,7 +166,7 @@ Item {
 
                     Text {
                         text: modelData.body
-                        color: palette.windowText
+                        color: Settings.text
                         font.pixelSize: 12
                         Layout.fillWidth: true
                         wrapMode: Text.WordWrap
@@ -181,21 +182,21 @@ Item {
                         Rectangle {
                             Layout.fillWidth: true
                             height: 4
-                            radius: 8
-                            color: palette.alternateBase
+                            radius: Settings.borderRadius
+                            color: Settings.surface
 
                             Rectangle {
                                 width: parent.width * (notifCard.progressValue / 100)
                                 height: parent.height
                                 radius: parent.radius
-                                color: palette.highlight
+                                color: Settings.accent
                                 Behavior on width { NumberAnimation { duration: 100 } }
                             }
                         }
 
                         Text {
                             text: notifCard.progressValue + "%"
-                            color: palette.windowText
+                            color: Settings.text
                             font.pixelSize: 10
                         }
                     }
@@ -212,9 +213,9 @@ Item {
                                 required property var modelData
                                 Layout.fillWidth: true
                                 height: 32
-                                radius: 8
-                                color: actionArea.containsMouse ? palette.highlight : palette.mid
-                                border { width: 1; color: palette.alternateBase }
+                                radius: Settings.borderRadius
+                                color: actionArea.containsMouse ? Settings.accent : Settings.surface
+                                border { width: 1; color: Settings.borderColor }
 
                                 MouseArea {
                                     id: actionArea
@@ -229,7 +230,7 @@ Item {
                                 Text {
                                     anchors.centerIn: parent
                                     text: modelData.text
-                                    color: actionArea.containsMouse ? palette.highlightedText : palette.windowText
+                                    color: actionArea.containsMouse ? Settings.accentText : Settings.text
                                     font.pixelSize: 12
                                     elide: Text.ElideRight
                                 }
