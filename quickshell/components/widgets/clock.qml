@@ -7,7 +7,7 @@ Rectangle {
     implicitHeight: Settings.clockH
     radius: Settings.borderRadius
 
-    color: Settings.surface
+    color: Settings.surfaceT
     border {
         width: Settings.borderWidth
         color: Settings.borderColor

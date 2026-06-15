@@ -20,8 +20,7 @@ Item {
         timeout: Settings.idleScreenOff
         respectInhibitors: true
         onIsIdleChanged: {
-            dpmsProc.command = ["sh", "-c",
-                "wlr-randr | grep '^[^ ]' | cut -d' ' -f1 | xargs -I{} wlr-randr --output {} " + (isIdle ? "--off" : "--on")]
+            dpmsProc.command = ["riveripc", "--output", isIdle ? "off" : "on"]
             dpmsProc.running = false
             dpmsProc.running = true
         }

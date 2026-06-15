@@ -9,7 +9,7 @@ Rectangle {
     implicitHeight: Settings.widgetSize + 16
     radius: Settings.borderRadius
 
-    color: Settings.surface
+    color: Settings.surfaceT
 
     Column {
         id: col
@@ -22,8 +22,8 @@ Rectangle {
             font.pixelSize: Settings.iconFont
             text: {
                 switch (UPower.displayDevice.state) {
-                    case 5: return "󰂄"
-                    case 1: return "󰁹"
+                    case 5: return "󰁹"
+                    case 1: return "󰂄"
                     case 2:
                         if (col.percentage > 90) return "󰂂"
                         if (col.percentage > 80) return "󰂁"

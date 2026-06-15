@@ -9,7 +9,6 @@ PanelWindow {
     visible: false
     color: "transparent"
     anchors { top: true; bottom: true; left: true; right: true }
-    WlrLayershell.layer: WlrLayer.Top
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
 
     IpcHandler {
@@ -30,7 +29,7 @@ PanelWindow {
         anchors.centerIn: parent
         width: btnRow.width + 16
         height: btnRow.height + 16
-        color: Settings.bg
+        color: Settings.bgT
         radius: Settings.borderRadius
         border { width: Settings.borderWidth; color: Settings.borderColor }
 
@@ -45,10 +44,10 @@ PanelWindow {
                 model: [
                     { icon: "󰌾", label: "Lock",      cmd: "qs ipc call lockScreen lock" },
                     { icon: "󰍃", label: "Logout",    cmd: "loginctl kill-session $XDG_SESSION_ID" },
-                    { icon: "󰤄", label: "Suspend",   cmd: "zzz" },
-                    { icon: "󰒲", label: "Hibernate", cmd: "ZZZ" },
-                    { icon: "󰑓", label: "Reboot",    cmd: "loginctl reboot" },
-                    { icon: "󰐥", label: "Shutdown",  cmd: "loginctl poweroff" },
+                    { icon: "󰤄", label: "Suspend",   cmd: "suspend" },
+                    { icon: "󰒲", label: "Hibernate", cmd: "systemctl hibernate" },
+                    { icon: "󰑓", label: "Reboot",    cmd: "reboot" },
+                    { icon: "󰐥", label: "Shutdown",  cmd: "poweroff" },
                 ]
 
                 delegate: Rectangle {
@@ -56,7 +55,7 @@ PanelWindow {
                     width: Settings.powerMenuBtnSize
                     height: Settings.powerMenuBtnSize
                     radius: Settings.borderRadius
-                    color: ma.containsMouse ? Settings.accent : Settings.surface
+                    color: ma.containsMouse ? Settings.accent : Settings.surfaceT
 
                     MouseArea {
                         id: ma

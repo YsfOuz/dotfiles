@@ -10,8 +10,7 @@ PanelWindow {
     visible: false
     color: "transparent"
     anchors { top: true; bottom: true; left: true; right: true }
-    WlrLayershell.layer: WlrLayer.Top
-    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
     WlrLayershell.namespace: "applauncher"
 
     readonly property var filteredApps: {
@@ -30,14 +29,8 @@ PanelWindow {
         if (visible) {
             searchInput.text = ""
             appList.currentIndex = 0
-            focusTimer.start()
+            searchInput.forceActiveFocus()
         }
-    }
-
-    Timer {
-        id: focusTimer
-        interval: 50
-        onTriggered: searchInput.forceActiveFocus()
     }
 
     MouseArea {
@@ -49,11 +42,9 @@ PanelWindow {
         anchors.centerIn: parent
         width: Settings.launcherWidth
         height: Settings.launcherHeight
-        color: Settings.bg
+        color: Settings.bgT
         radius: Settings.borderRadius
         border { width: Settings.borderWidth; color: Settings.borderColor }
-
-        MouseArea { anchors.fill: parent }
 
         ColumnLayout {
             anchors.fill: parent
@@ -62,7 +53,7 @@ PanelWindow {
                 Layout.fillWidth: true
                 Layout.margins: 8
                 height: Settings.launcherItemHeight
-                color: Settings.surface
+                color: Settings.surfaceT
                 radius: Settings.borderRadius
 
                 TextInput {
@@ -105,7 +96,7 @@ PanelWindow {
                     width: parent.width
                     height: Settings.launcherItemHeight
                     radius: Settings.borderRadius
-                    color: ListView.isCurrentItem ? Settings.accent : Settings.surface
+                    color: ListView.isCurrentItem ? Settings.accent : Settings.surfaceT
 
                     RowLayout {
                         anchors { fill: parent; margins: 8 }

@@ -41,7 +41,7 @@ PanelWindow {
         anchors.centerIn: parent
         width: Settings.polkitWidth
         height: dialogLayout.implicitHeight + 32
-        color: Settings.bg
+        color: Settings.bgT
         radius: Settings.borderRadius
         border { width: Settings.borderWidth; color: Settings.borderColor }
 
@@ -90,7 +90,7 @@ PanelWindow {
                 visible: agent.flow && agent.flow.isResponseRequired
                 height: 32
                 radius: Settings.borderRadius
-                color: Settings.surface
+                color: Settings.surfaceT
                 border {
                     width: Settings.borderWidth
                     color: passwordInput.activeFocus ? Settings.accent : Settings.borderColor
@@ -113,7 +113,7 @@ PanelWindow {
                 Rectangle {
                     implicitWidth: 100; implicitHeight: 32
                     radius: Settings.borderRadius
-                    color: cancelMa.containsMouse ? Settings.accent : Settings.surface
+                    color: cancelMa.containsMouse ? Settings.accent : Settings.surfaceT
 
                     MouseArea {
                         id: cancelMa
@@ -134,7 +134,7 @@ PanelWindow {
                     implicitWidth: 128; implicitHeight: 32
                     radius: Settings.borderRadius
                     visible: agent.flow && agent.flow.isResponseRequired
-                    color: authMa.containsMouse ? Settings.accent : Settings.surface
+                    color: authMa.containsMouse ? Settings.accent : Settings.surfaceT
 
                     MouseArea {
                         id: authMa

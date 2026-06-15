@@ -8,7 +8,7 @@ Rectangle {
     implicitHeight: Settings.widgetSize + 16
     radius: Settings.borderRadius
 
-    color: Settings.surface
+    color: Settings.surfaceT
 
     property int current: 0
     property int max: 1

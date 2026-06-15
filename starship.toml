@@ -1,6 +1,6 @@
 format = """
 [┏━━━━━━━](bold cyan)[$directory](bold white)[$git_branch$git_commit$git_status](blue)[$c$rust$python$zig$cmake$meson$lua$java$haskell$package](green)[$memory_usage](dimmed white)
-[┗━━━](bold cyan)$hostname@$username[━━](bold cyan)$cmd_duration[━━](bold cyan)$character
+[┗━━━](bold cyan)$hostname(bold green)@$username(bold orange)[━━](bold cyan)$cmd_duration[━━](bold cyan)$character
 """
 
 [username]

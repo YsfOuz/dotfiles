@@ -25,7 +25,7 @@ PanelWindow {
 
     Rectangle {
         anchors.fill: parent
-        color: Settings.bg
+        color: Settings.bgT
         radius: Settings.borderRadius
         border {
             width: Settings.borderWidth

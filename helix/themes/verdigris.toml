@@ -2,7 +2,7 @@
 # Author: YsfOuz
 
 # ── UI Chrome ────────────────────────────────────────────────
-"ui.background"            = { bg = "bg" }
+# "ui.background"            = { bg = "bg" }
 "ui.background.preview"    = { bg = "bg_dark" }
 
 "ui.text"                  = { fg = "fg" }
@@ -46,7 +46,7 @@
 "ui.bufferline.active"     = { fg = "fg_light", bg = "bg", modifiers = ["bold"] }
 "ui.bufferline.background" = { bg = "bg_dark" }
 
-"ui.gutter"                = { bg = "bg" }
+# "ui.gutter"                = { bg = "bg" }
 "ui.gutter.selected"       = { bg = "bg_line" }
 
 "ui.virtual.ruler"         = { bg = "bg_panel" }

@@ -11,7 +11,7 @@ Rectangle {
     implicitHeight: Settings.widgetSize
     radius: Settings.borderRadius
 
-    color: inhibitor.enabled ? Settings.accent : Settings.surface
+    color: inhibitor.enabled ? Settings.accent : Settings.surfaceT
 
     IdleInhibitor {
         id: inhibitor

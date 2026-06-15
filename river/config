@@ -1,20 +1,23 @@
 #!/bin/sh
 
+terminal=alacritty
+menu="qs ipc call launcher toggle"
+
 # Appearance
-riverctl background-color 0x0E2524
+riverctl background-color 0x0e2524
 riverctl border-width 2
-riverctl border-color-focused 0x3AB6B6
+riverctl border-color-focused 0xe4be9b
 riverctl border-color-unfocused 0x153836
-riverctl border-color-urgent 0xB63A3A
-riverctl xcursor-theme Adwaita 24
+riverctl border-color-urgent 0xb63a3a
+riverctl xcursor-theme Bibata-Modern-Ice 24
 riverctl rule-add ssd
 
 # Behavior
 riverctl focus-follows-cursor normal
-riverctl default-attach-mode bottom
 riverctl set-repeat 50 250
 riverctl keyboard-layout tr
-riverctl allow-tearing enabled
+riverctl set-cursor-warp on-focus-change
+riverctl default-attach-mode bottom
 
 # Input
 riverctl hide-cursor when-typing enabled
@@ -22,17 +25,15 @@ riverctl input "*Touchpad" tap enabled
 riverctl input "*Touchpad" natural-scroll enabled
 riverctl input "*Touchpad" disable-while-typing enabled
 riverctl input "*Touchpad" disable-while-trackpointing enabled
-riverctl input "*Touchpad" accel-profile flat
-riverctl input "*TrackPoint" accel-profile flat
 
 # Mouse bindings
 riverctl map-pointer normal Super BTN_LEFT move-view
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 # Apps
-riverctl map normal Super Return spawn alacritty
+riverctl map normal Super Return spawn $terminal
 riverctl map normal Super Q      close
-riverctl map normal Super Space  spawn "qs ipc call launcher toggle"
+riverctl map normal Super Space  spawn "$menu"
 riverctl map normal Super Escape spawn "qs ipc call powerMenu toggle"
 
 # Layout
@@ -55,16 +56,15 @@ for i in $(seq 1 9); do
 done
 
 # Screenshots
-riverctl map normal None Print    spawn 'grim ~/Pictures/$(date +%F_%T).png'
-riverctl map normal Control Print spawn 'grim -g "$(slurp)" ~/Pictures/$(date +%F_%T).png'
+riverctl map normal None Print spawn 'grim -g "$(slurp)" - | tee "$HOME/Pictures/$(date +%Y-%m-%d_%H-%M-%S).png" | wl-copy'
 
 # Media keys
-riverctl map normal None XF86AudioRaiseVolume  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"
-riverctl map normal None XF86AudioLowerVolume  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+riverctl map -repeat normal None XF86AudioRaiseVolume  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ -l 1.0"
+riverctl map -repeat normal None XF86AudioLowerVolume  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
 riverctl map normal None XF86AudioMute         spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 riverctl map normal None XF86AudioMicMute      spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-riverctl map normal None XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
-riverctl map normal None XF86MonBrightnessDown spawn "brightnessctl set 5%- -n 5%"
+riverctl map -repeat normal None XF86MonBrightnessUp   spawn "brightnessctl set 5%+"
+riverctl map -repeat normal None XF86MonBrightnessDown spawn "brightnessctl set 5%- -n 5%"
 
 # Session
 riverctl map normal Super+Shift Escape exit

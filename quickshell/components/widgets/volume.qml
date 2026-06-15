@@ -8,7 +8,7 @@ Rectangle {
     implicitHeight: Settings.widgetSize + 16
     radius: Settings.borderRadius
 
-    color: Settings.surface
+    color: Settings.surfaceT
 
     PwObjectTracker { objects: [Pipewire.defaultAudioSink] }
 

@@ -15,6 +15,11 @@ QtObject {
     property color accentText:  _p.highlightedText
     property color danger:      "#B63A3A"
 
+    property real opacity: 1.0
+
+    readonly property color bgT:      Qt.rgba(bg.r,      bg.g,      bg.b,      opacity)
+    readonly property color surfaceT: Qt.rgba(surface.r, surface.g, surface.b, opacity)
+
     property int borderWidth:  2
     property int borderRadius: 4
 
@@ -27,10 +32,10 @@ QtObject {
     property var bottomModules: ["tray", "idleInhibitor", "mic", "volume", "brightness", "powerProfile", "battery"]
 
     property int idleDim:       300
-    property int idleScreenOff: 900
+    property int idleScreenOff: 600
     property int idleLock:      1800
 
-    property string wallpaperPath:     Quickshell.env("HOME") + "/.config/wallpapers/verdigrisMinimal.png"
+    property string wallpaperPath:     Quickshell.env("HOME") + "/.config/wallpapers/verdigris.png"
     property int    wallpaperFillMode: 2
 
     property real   volumeStep:     0.05

@@ -8,7 +8,7 @@ Rectangle {
     implicitHeight: Settings.widgetSize
     radius: Settings.borderRadius
 
-    color: Settings.surface
+    color: Settings.surfaceT
 
     Text {
         anchors.centerIn: parent

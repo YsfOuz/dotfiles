@@ -72,7 +72,7 @@ Item {
                 height: cardLayout.implicitHeight + 16
                 radius: Settings.borderRadius
 
-                color: Settings.bg
+                color: Settings.bgT
                 border {
                     width: Settings.borderWidth
                     color: modelData.urgency === 2 ? Settings.danger : Settings.borderColor
@@ -183,7 +183,7 @@ Item {
                             Layout.fillWidth: true
                             height: 4
                             radius: Settings.borderRadius
-                            color: Settings.surface
+                            color: Settings.surfaceT
 
                             Rectangle {
                                 width: parent.width * (notifCard.progressValue / 100)
@@ -214,7 +214,7 @@ Item {
                                 Layout.fillWidth: true
                                 height: 32
                                 radius: Settings.borderRadius
-                                color: actionArea.containsMouse ? Settings.accent : Settings.surface
+                                color: actionArea.containsMouse ? Settings.accent : Settings.surfaceT
                                 border { width: 1; color: Settings.borderColor }
 
                                 MouseArea {

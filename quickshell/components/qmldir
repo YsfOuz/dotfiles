@@ -7,3 +7,4 @@ Notifications 1.0 notifications.qml
 LockScreen 1.0 lockScreen.qml
 PolkitAgent 1.0 polkitAgent.qml
 IdleManager 1.0 idleManager.qml
+Launcher 1.0 launcher.qml

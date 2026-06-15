@@ -5,6 +5,7 @@ scrolloff = 8
 cursorline = true
 bufferline = "multiple"
 popup-border = "all"
+completion-trigger-len = 0
 
 [editor.cursor-shape]
 insert = "bar"
