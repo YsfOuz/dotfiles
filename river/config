@@ -4,19 +4,20 @@ terminal=alacritty
 menu="qs ipc call launcher toggle"
 
 # Appearance
+gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+
 riverctl background-color 0x0e2524
 riverctl border-width 2
 riverctl border-color-focused 0xe4be9b
 riverctl border-color-unfocused 0x153836
 riverctl border-color-urgent 0xb63a3a
-riverctl xcursor-theme Bibata-Modern-Ice 24
+riverctl xcursor-theme Bibata-Original-Ice 24
 riverctl rule-add ssd
 
 # Behavior
 riverctl focus-follows-cursor normal
 riverctl set-repeat 50 250
 riverctl keyboard-layout tr
-riverctl set-cursor-warp on-focus-change
 riverctl default-attach-mode bottom
 
 # Input

@@ -1,25 +1,22 @@
 import QtQuick
-import QtQuick.Layouts
+import Quickshell
 import Quickshell.Services.UPower
-import "../.."
+import QtQuick.Layouts
+import "../config.js" as Config
 
 Rectangle {
-    visible: UPower.displayDevice ? UPower.displayDevice.isLaptopBattery : false
-    implicitWidth: Settings.widgetSize
-    implicitHeight: Settings.widgetSize + 16
-    radius: Settings.borderRadius
-
-    color: Settings.surfaceT
-
-    Column {
-        id: col
-        anchors.centerIn: parent
+    implicitWidth: Config.bar.width - Layout.margins*2
+    implicitHeight: widget.height
+    color: Config.colors.bgLight
+    Layout.margins: 8
+    ColumnLayout {
+        id: widget
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         readonly property int percentage: UPower.displayDevice.percentage * 100
-
         Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            color: Settings.text
-            font.pixelSize: Settings.iconFont
+            color: Config.colors.fg
+            font.pixelSize: Config.font.size
             text: {
                 switch (UPower.displayDevice.state) {
                     case 5: return "󰁹"
@@ -38,12 +35,10 @@ Rectangle {
                 }
             }
         }
-
         Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: UPower.displayDevice ? col.percentage + "%" : "?"
-            color: Settings.text
-            font.pixelSize: Settings.labelFont
+            text: UPower.displayDevice ? widget.percentage + "%" : "?"
+            color: Config.colors.fg
+            font.pixelSize: Config.font.size
         }
     }
 }

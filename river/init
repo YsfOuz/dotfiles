@@ -1,9 +1,17 @@
 #!/bin/sh
 
-riverctl spawn "rivertile -view-padding 4 -outer-padding 4 -main-ratio 0.5"
+riverctl spawn /usr/libexec/xdg-desktop-portal-gtk
+riverctl spawn /usr/libexec/xdg-desktop-portal-wlr
+dbus-update-activation-environment --all
+riverctl spawn /usr/libexec/xdg-desktop-portal
+
+riverctl spawn "rivertile -view-padding 0 -outer-padding 0 -main-ratio 0.5"
 riverctl default-layout rivertile
+
+riverctl spawn pipewire
 riverctl spawn quickshell
 riverctl spawn nm-applet
+riverctl spawn blueman-applet
 
 riverctl map normal Super R spawn "$HOME/.config/river/config"
 riverctl spawn "$HOME/.config/river/config"

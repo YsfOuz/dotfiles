@@ -1,0 +1,4 @@
+Clock clock.qml
+SystemTray systemTray.qml
+Workspaces workspaces.qml
+Battery battery.qml

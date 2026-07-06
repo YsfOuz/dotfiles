@@ -1,17 +1,9 @@
 //@ pragma UseQApplication
+
 import Quickshell
-import QtQuick
-import Quickshell.Wayland
-import "components"
 
-ShellRoot {
-    Wallpaper{}
-    Bar{}
-
-    AppLauncher{}
-    PowerMenu{}
-    Notifications{}
-    LockScreen{}
-    PolkitAgent{}
-    IdleManager{}
+Scope {
+    Bar {}
+    Launcher {}
+    Notifications {}
 }

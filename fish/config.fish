@@ -1,5 +1,7 @@
+fish_add_path ~/.local/bin
+
 function fish_greeting
-    fastfetch -c paleofetch.jsonc
+    ufetch
 end
 
 starship init fish | source
